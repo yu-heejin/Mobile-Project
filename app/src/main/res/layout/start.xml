@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
         android:layout_marginTop="108dp"
-        android:onClick="onClick"
+        android:onClick="startButtonOnClick"
         android:text="시작하기"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />

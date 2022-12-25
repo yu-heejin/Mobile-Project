@@ -14,10 +14,8 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.start);
     }
 
-    public void onClick(View view) {
-        if (view.getId() == R.id.startButton) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        }
+    public void startButtonOnClick(View view) {
+        Intent mainIntent = new Intent(this, MainActivity.class);
+        startActivity(mainIntent);
     }
 }
