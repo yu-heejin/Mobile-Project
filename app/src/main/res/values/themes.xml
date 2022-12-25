@@ -13,5 +13,15 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="windowNoTitle">true</item>
+        <item name="android:textViewStyle">@style/basicFontTextView</item>
+        <item name="android:buttonStyle">@style/basicFontButton</item>
+    </style>
+
+    <style name="basicFontTextView" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/gmarketsansttfmedium</item>
+    </style>
+
+    <style name="basicFontButton" parent="android:Widget.Button">
+        <item name="android:fontFamily">@font/gmarketsansttfmedium</item>
     </style>
 </resources>

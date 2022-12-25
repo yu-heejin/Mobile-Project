@@ -6,56 +6,62 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/DiaryButton"
         android:layout_width="219dp"
         android:layout_height="136dp"
-        android:backgroundTint="#CCF1F6"
-        android:drawableTop="@drawable/dog_image_size"
-        android:text="✨ 유기견에게 한줄기 희망이 되어주세요!"
-        android:textColor="#000000"
-        tools:layout_editor_absoluteX="71dp"
-        tools:layout_editor_absoluteY="443dp" />
-
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="219dp"
-        android:layout_height="136dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="36dp"
         android:backgroundTint="#E8FDD0"
         android:drawableTop="@drawable/diary_image_size"
         android:text="🤗 반려동물과의 추억 기록하기"
         android:textColor="#000000"
-        tools:layout_editor_absoluteX="71dp"
-        tools:layout_editor_absoluteY="274dp" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="59dp"
-        android:layout_height="82dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/pet" />
+        app:layout_constraintTop_toBottomOf="@+id/hospitalButton" />
+
+    <Button
+        android:id="@+id/hospitalButton"
+        android:layout_width="219dp"
+        android:layout_height="136dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#FFF8BF"
+        android:drawableTop="@drawable/hospital_image_size"
+        android:text="💕 내 주변 동물병원 정보 찾기"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <Button
+        android:id="@+id/adoptButton"
+        android:layout_width="219dp"
+        android:layout_height="136dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="#CCF1F6"
+        android:drawableTop="@drawable/dog_image_size"
+        android:text="✨ 유기견에게 한줄기 희망이 되어주세요!"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DiaryButton" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="227dp"
         android:layout_height="43dp"
-        android:layout_marginStart="96dp"
+        android:layout_marginStart="116dp"
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="219dp"
-        android:layout_height="136dp"
-        android:backgroundTint="#FFF8BF"
-        android:drawableTop="@drawable/hospital_image_size"
-        android:text="💕 내 주변 동물병원 정보 찾기"
-        android:textColor="#000000"
-        tools:layout_editor_absoluteX="71dp"
-        tools:layout_editor_absoluteY="111dp" />
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="59dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pet" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
