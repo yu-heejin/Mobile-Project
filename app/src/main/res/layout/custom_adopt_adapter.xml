@@ -6,40 +6,64 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/breed"
+        android:id="@+id/protection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="25dp"
+        android:text="[상태]"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/kind"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/endDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="12dp"
+        android:text="입양 종료일"
+        android:textColor="#303030"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/petPicture"
+        app:layout_constraintTop_toBottomOf="@+id/city" />
+
+    <TextView
+        android:id="@+id/startDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
         android:layout_marginTop="13dp"
-        android:text="품종 적는 곳"
+        android:text="입양 시작일"
         android:textColor="#303030"
         android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/petPicture"
-        app:layout_constraintTop_toBottomOf="@+id/city1" />
+        app:layout_constraintTop_toBottomOf="@+id/city" />
 
     <TextView
-        android:id="@+id/city2"
+        android:id="@+id/disease"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="11dp"
         android:layout_marginTop="13dp"
-        android:text="시군구 적는 곳"
+        android:text="질병 적는 곳"
         android:textColor="#303030"
         android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/city1"
-        app:layout_constraintTop_toBottomOf="@+id/petName" />
+        app:layout_constraintStart_toEndOf="@+id/city"
+        app:layout_constraintTop_toBottomOf="@+id/kind" />
 
     <TextView
-        android:id="@+id/city1"
+        android:id="@+id/city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
         android:layout_marginTop="13dp"
-        android:text="시도 적는 곳"
+        android:text="시군구 적는 곳"
         android:textColor="#303030"
         android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/petPicture"
-        app:layout_constraintTop_toBottomOf="@+id/petName" />
+        app:layout_constraintTop_toBottomOf="@+id/kind" />
 
     <ImageView
         android:id="@+id/petPicture"
@@ -52,12 +76,12 @@
         app:srcCompat="@drawable/dog" />
 
     <TextView
-        android:id="@+id/petName"
+        android:id="@+id/kind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
         android:layout_marginTop="25dp"
-        android:text="유기동물 이름을 적는 곳"
+        android:text="품종 적는 곳"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/petPicture"

@@ -25,4 +25,9 @@ public class MainActivity extends AppCompatActivity {
         Intent diaryIntent = new Intent(this, DiaryListActivity.class);
         startActivity(diaryIntent);
     }
+
+    public void adoptOnClick(View view) {
+        Intent adoptIntent = new Intent(this, AdoptListActivity.class);
+        startActivity(adoptIntent);
+    }
 }
