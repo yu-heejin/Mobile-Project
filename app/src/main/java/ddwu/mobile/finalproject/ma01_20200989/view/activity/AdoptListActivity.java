@@ -1,4 +1,4 @@
-package ddwu.mobile.finalproject.ma01_20200989.activities;
+package ddwu.mobile.finalproject.ma01_20200989.view.activity;
 
 import android.os.Bundle;
 import android.widget.ListView;
@@ -7,8 +7,8 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import ddwu.mobile.finalproject.ma01_20200989.R;
-import ddwu.mobile.finalproject.ma01_20200989.adapters.AdoptAdapter;
-import ddwu.mobile.finalproject.ma01_20200989.dtos.AdoptDto;
+import ddwu.mobile.finalproject.ma01_20200989.view.adapter.AdoptAdapter;
+import ddwu.mobile.finalproject.ma01_20200989.model.dto.AdoptDto;
 
 public class AdoptListActivity extends AppCompatActivity {
     private List<AdoptDto> adopts;

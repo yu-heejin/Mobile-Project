@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -21,7 +23,7 @@
             android:value="@string/API_KEY" />
 
         <activity
-            android:name=".activities.StartActivity"
+            android:name=".view.activity.StartActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,10 +34,10 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".activities.MainActivity" />
-        <activity android:name=".activities.HospitalActivity" />
-        <activity android:name=".activities.DiaryListActivity" />
-        <activity android:name=".activities.AdoptListActivity" />
+        <activity android:name=".view.activity.MainActivity" />
+        <activity android:name=".view.activity.HospitalActivity" />
+        <activity android:name=".view.activity.DiaryListActivity" />
+        <activity android:name=".view.activity.AdoptListActivity" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package ddwu.mobile.finalproject.ma01_20200989.activities;
+package ddwu.mobile.finalproject.ma01_20200989.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;

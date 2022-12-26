@@ -1,4 +1,4 @@
-package ddwu.mobile.finalproject.ma01_20200989.adapters;
+package ddwu.mobile.finalproject.ma01_20200989.view.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import java.util.List;
 import ddwu.mobile.finalproject.ma01_20200989.R;
-import ddwu.mobile.finalproject.ma01_20200989.dtos.DirayDto;
+import ddwu.mobile.finalproject.ma01_20200989.model.dto.DirayDto;
 
 public class DiaryAdapter extends BaseAdapter {
     private Context context;
