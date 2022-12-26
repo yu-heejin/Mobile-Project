@@ -4,13 +4,9 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
-import android.os.Looper;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -24,7 +20,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 import ddwu.mobile.finalproject.ma01_20200989.R;
 
 public class HospitalActivity extends AppCompatActivity {
@@ -41,42 +36,14 @@ public class HospitalActivity extends AppCompatActivity {
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(mapReadyCallback);
-
-        fusedLocationProviderClient.requestLocationUpdates(
-                getLocationRequest(),
-                locationCallback,
-                Looper.getMainLooper()
-        );
     }
 
     OnMapReadyCallback mapReadyCallback = new OnMapReadyCallback() {
         @Override
         public void onMapReady(@NonNull GoogleMap googleMap) {
             googleMapObject = googleMap;
-
-            LatLng currentLocation = new LatLng(lastLocation.getLatitude(), lastLocation.getLongitude());
-            googleMapObject.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 17));
-
-            MarkerOptions markerOptions = new MarkerOptions();
-            markerOptions.position(currentLocation);
-            markerOptions.title("현재 위치");
-            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
-
-            currentMarker = googleMapObject.addMarker(markerOptions);
-            currentMarker.showInfoWindow();
         }
     };
 
@@ -88,6 +55,17 @@ public class HospitalActivity extends AppCompatActivity {
                 double longitude = location.getLongitude();
 
                 lastLocation = location;
+
+                LatLng currentLocation = new LatLng(latitude, longitude);
+                googleMapObject.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 17));
+
+                MarkerOptions markerOptions = new MarkerOptions();
+                markerOptions.position(currentLocation);
+                markerOptions.title("현재 위치");
+                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
+
+                currentMarker = googleMapObject.addMarker(markerOptions);
+                currentMarker.showInfoWindow();
             }
         }
     };
