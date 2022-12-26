@@ -7,11 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
 import java.util.List;
-
 import ddwu.mobile.finalproject.ma01_20200989.R;
 import ddwu.mobile.finalproject.ma01_20200989.dtos.AdoptDto;
 

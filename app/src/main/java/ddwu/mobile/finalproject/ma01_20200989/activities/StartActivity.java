@@ -3,7 +3,6 @@ package ddwu.mobile.finalproject.ma01_20200989.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import androidx.appcompat.app.AppCompatActivity;
 import ddwu.mobile.finalproject.ma01_20200989.R;
 

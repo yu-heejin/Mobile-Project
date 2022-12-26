@@ -7,10 +7,8 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -26,7 +24,6 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-
 import ddwu.mobile.finalproject.ma01_20200989.R;
 
 public class HospitalActivity extends AppCompatActivity {
@@ -56,8 +53,6 @@ public class HospitalActivity extends AppCompatActivity {
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(mapReadyCallback);
-
-
     }
 
     OnMapReadyCallback mapReadyCallback = new OnMapReadyCallback() {
