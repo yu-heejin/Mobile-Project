@@ -14,7 +14,7 @@
         android:backgroundTint="#E4DEFE"
         android:drawableTop="@drawable/diary_image_size"
         android:onClick="diaryOnClick"
-        android:text="✍️️️반려동물 건강 상태 기록하기"
+        android:text="✍반려동물 건강 상태 기록하기"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hospitalButton" />
