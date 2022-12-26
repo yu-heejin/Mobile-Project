@@ -28,12 +28,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import ddwu.mobile.finalproject.ma01_20200989.R;
 
 public class HospitalActivity extends AppCompatActivity {
-    private final String CURRENT_MARKER_TITLE = "현재 위치";
     private final int REQ_PERMISSION_CODE = 100;
-
+    private FusedLocationProviderClient fusedLocationProviderClient;
     private GoogleMap googleMapObject;
     private Location lastLocation;
-    FusedLocationProviderClient fusedLocationProviderClient;
     private Marker currentMarker;
 
     @Override
@@ -43,8 +41,25 @@ public class HospitalActivity extends AppCompatActivity {
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(mapReadyCallback);
+
+        fusedLocationProviderClient.requestLocationUpdates(
+                getLocationRequest(),
+                locationCallback,
+                Looper.getMainLooper()
+        );
     }
 
     OnMapReadyCallback mapReadyCallback = new OnMapReadyCallback() {
@@ -52,16 +67,18 @@ public class HospitalActivity extends AppCompatActivity {
         public void onMapReady(@NonNull GoogleMap googleMap) {
             googleMapObject = googleMap;
 
+            LatLng currentLocation = new LatLng(lastLocation.getLatitude(), lastLocation.getLongitude());
+            googleMapObject.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 17));
+
+            MarkerOptions markerOptions = new MarkerOptions();
+            markerOptions.position(currentLocation);
+            markerOptions.title("현재 위치");
+            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
+
+            currentMarker = googleMapObject.addMarker(markerOptions);
+            currentMarker.showInfoWindow();
         }
     };
-
-    private LocationRequest getLocationRequest() {
-        LocationRequest locationRequest = new LocationRequest();
-        locationRequest.setInterval(5000);
-        locationRequest.setFastestInterval(1000);
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        return locationRequest;
-    }
 
     LocationCallback locationCallback = new LocationCallback() {
         @Override
@@ -71,23 +88,28 @@ public class HospitalActivity extends AppCompatActivity {
                 double longitude = location.getLongitude();
 
                 lastLocation = location;
-                LatLng currentLocation = new LatLng(latitude, longitude);
-                googleMapObject.animateCamera(CameraUpdateFactory.newLatLng(currentLocation));
-
-                MarkerOptions markerOptions = new MarkerOptions();
-                markerOptions.position(currentLocation);
-                markerOptions.title(CURRENT_MARKER_TITLE);
-                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
-
-                currentMarker = googleMapObject.addMarker(markerOptions);
-                currentMarker.showInfoWindow();
             }
         }
     };
 
     @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String[] permissions, @NonNull int[] grantResults) {
+    protected void onPause() {
+        super.onPause();
+        fusedLocationProviderClient.removeLocationUpdates(locationCallback);
+    }
+
+    private void checkPermission() {
+        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+                checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this,"Permissions Granted", Toast.LENGTH_SHORT).show();
+        } else {
+            requestPermissions(new String[]{
+                    Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, REQ_PERMISSION_CODE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case REQ_PERMISSION_CODE:
@@ -101,16 +123,11 @@ public class HospitalActivity extends AppCompatActivity {
         }
     }
 
-    private void checkPermission() {
-        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) ==
-                PackageManager.PERMISSION_GRANTED &&
-                checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) ==
-                        PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(this,"Permissions Granted", Toast.LENGTH_SHORT).show();
-        } else {
-            requestPermissions(new String[]{
-                    Manifest.permission.ACCESS_COARSE_LOCATION,
-                    Manifest.permission.ACCESS_FINE_LOCATION}, REQ_PERMISSION_CODE);
-        }
+    private LocationRequest getLocationRequest() {
+        LocationRequest locationRequest = new LocationRequest();
+        locationRequest.setInterval(5000);
+        locationRequest.setFastestInterval(1000);
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        return locationRequest;
     }
 }
