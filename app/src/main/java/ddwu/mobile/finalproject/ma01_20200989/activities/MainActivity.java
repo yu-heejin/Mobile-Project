@@ -20,4 +20,9 @@ public class MainActivity extends AppCompatActivity {
         Intent hospitalIntent = new Intent(this, HospitalActivity.class);
         startActivity(hospitalIntent);
     }
+
+    public void diaryOnClick(View view) {
+        Intent diaryIntent = new Intent(this, DiaryListActivity.class);
+        startActivity(diaryIntent);
+    }
 }
