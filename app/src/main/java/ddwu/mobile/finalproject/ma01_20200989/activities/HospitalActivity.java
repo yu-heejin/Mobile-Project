@@ -20,7 +20,10 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
@@ -28,10 +31,13 @@ import ddwu.mobile.finalproject.ma01_20200989.R;
 
 public class HospitalActivity extends AppCompatActivity {
     private final int REQ_PERMISSION_CODE = 100;
+    private final String CURRENT_TITLE = "현재 위치";
+
     private GoogleMap googleMapObject;
     private Location lastLocation;
     private FusedLocationProviderClient fusedLocationProviderClient;
     final String TAG = "MainActivity";
+    private Marker currentMarker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +65,6 @@ public class HospitalActivity extends AppCompatActivity {
         public void onMapReady(@NonNull GoogleMap googleMap) {
             googleMapObject = googleMap;
 
-//            LatLng currentLocation = new LatLng(lastLocation.getLatitude(), lastLocation.getLongitude());
-//            googleMapObject.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 17));
         }
     };
 
@@ -75,6 +79,14 @@ public class HospitalActivity extends AppCompatActivity {
                 LatLng currentLocation = new LatLng(latitude, longitude);
 
                 googleMapObject.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 17));
+
+                MarkerOptions markerOptions = new MarkerOptions();
+                markerOptions.position(currentLocation);
+                markerOptions.title(CURRENT_TITLE);
+                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
+
+                currentMarker = googleMapObject.addMarker(markerOptions);
+                currentMarker.showInfoWindow();
             }
         }
     };
