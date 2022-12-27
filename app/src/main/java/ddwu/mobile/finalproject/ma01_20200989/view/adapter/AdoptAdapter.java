@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.List;
 import ddwu.mobile.finalproject.ma01_20200989.R;
-import ddwu.mobile.finalproject.ma01_20200989.model.dto.AdoptDto;
+import ddwu.mobile.finalproject.ma01_20200989.model.domain.dto.AdoptDto;
 
 public class AdoptAdapter extends BaseAdapter {
     private Context context;

@@ -38,6 +38,7 @@
         <activity android:name=".view.activity.HospitalActivity" />
         <activity android:name=".view.activity.DiaryListActivity" />
         <activity android:name=".view.activity.AdoptListActivity" />
+        <activity android:name=".view.activity.DetailDiaryActivity" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package ddwu.mobile.finalproject.ma01_20200989.model.dto;
+package ddwu.mobile.finalproject.ma01_20200989.model.domain.dto;
 
 import java.sql.Date;
 

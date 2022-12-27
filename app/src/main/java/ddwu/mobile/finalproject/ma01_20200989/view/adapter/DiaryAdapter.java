@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import java.util.List;
 import ddwu.mobile.finalproject.ma01_20200989.R;
-import ddwu.mobile.finalproject.ma01_20200989.model.dto.DirayDto;
+import ddwu.mobile.finalproject.ma01_20200989.model.domain.dto.DirayDto;
 
 public class DiaryAdapter extends BaseAdapter {
     private Context context;

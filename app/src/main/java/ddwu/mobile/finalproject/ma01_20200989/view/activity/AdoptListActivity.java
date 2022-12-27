@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import ddwu.mobile.finalproject.ma01_20200989.R;
 import ddwu.mobile.finalproject.ma01_20200989.view.adapter.AdoptAdapter;
-import ddwu.mobile.finalproject.ma01_20200989.model.dto.AdoptDto;
+import ddwu.mobile.finalproject.ma01_20200989.model.domain.dto.AdoptDto;
 
 public class AdoptListActivity extends AppCompatActivity {
     private List<AdoptDto> adopts;
