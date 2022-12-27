@@ -1,4 +1,4 @@
-package ddwu.mobile.finalproject.ma01_20200989.database;
+package ddwu.mobile.finalproject.ma01_20200989.model.service.database;
 
 import android.content.Context;
 

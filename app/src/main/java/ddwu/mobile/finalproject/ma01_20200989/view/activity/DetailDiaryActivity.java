@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import ddwu.mobile.finalproject.ma01_20200989.R;
-import ddwu.mobile.finalproject.ma01_20200989.database.DiaryDatabase;
+import ddwu.mobile.finalproject.ma01_20200989.model.service.database.DiaryDatabase;
 import ddwu.mobile.finalproject.ma01_20200989.model.domain.entity.Diary;
 import ddwu.mobile.finalproject.ma01_20200989.model.repository.DiaryDao;
 import io.reactivex.Single;

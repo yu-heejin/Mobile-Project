@@ -5,9 +5,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
-
 import java.util.List;
-
 import ddwu.mobile.finalproject.ma01_20200989.model.domain.entity.Diary;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;

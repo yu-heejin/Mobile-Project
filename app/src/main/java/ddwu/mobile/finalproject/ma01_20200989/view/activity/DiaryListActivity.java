@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 import ddwu.mobile.finalproject.ma01_20200989.R;
-import ddwu.mobile.finalproject.ma01_20200989.database.DiaryDatabase;
+import ddwu.mobile.finalproject.ma01_20200989.model.service.database.DiaryDatabase;
 import ddwu.mobile.finalproject.ma01_20200989.model.domain.entity.Diary;
 import ddwu.mobile.finalproject.ma01_20200989.model.repository.DiaryDao;
 import ddwu.mobile.finalproject.ma01_20200989.view.adapter.DiaryAdapter;
