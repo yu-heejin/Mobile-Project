@@ -41,29 +41,36 @@ public class DiaryListActivity extends AppCompatActivity {
         diaryDatabase = DiaryDatabase.getDatabase(this);
         diaryDao = diaryDatabase.diaryDao();
 
-        diaries = new ArrayList<>();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                diaries = initList();
 
-        Flowable<List<Diary>> resultDiaries = diaryDao.findAllDiary();
+                if (diaries == null) {
+                    diaries = new ArrayList<>();
+                }
 
-        DISPOSABLE.add ( resultDiaries
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(allDiary -> {
-                    diaries.clear();
-                            for (Diary diary : allDiary) {
-                                DiaryDto diaryDto = new DiaryDto(diary.id, diary.title, diary.content, diary.status, diary.date);
-                                diaries.add(diaryDto);
-                            }
-                        },
-                        throwable -> Log.d(TAG, "error", throwable))
-        );
+                diaryAdapter = new DiaryAdapter(DiaryListActivity.this, R.layout.custom_diary_adapter, diaries);
+                listView = (ListView) findViewById(R.id.diaryListView);
+                listView.setAdapter(diaryAdapter);
+            }
+        }
+        ).start();
 
         /* mock data */
         // diaries.add(new DirayDto(1, "testTitle", "안녕하세요", "좋음", "2022-11-11"));
+    }
 
-        diaryAdapter = new DiaryAdapter(this, R.layout.custom_diary_adapter, diaries);
-        listView = (ListView) findViewById(R.id.diaryListView);
-        listView.setAdapter(diaryAdapter);
+    private List<DiaryDto> initList() {
+        List<Diary> resultDiaries = diaryDao.findAllDiaryAtStart();
+        List<DiaryDto> diariesForReturn = new ArrayList<DiaryDto>();
+
+        for (Diary diary : resultDiaries) {
+            DiaryDto diaryDto = new DiaryDto(diary.id, diary.title, diary.content, diary.status, diary.date);
+            diariesForReturn.add(diaryDto);
+        }
+
+        return diariesForReturn;
     }
 
     public void addDiaryButtonOnClick(View view) {
@@ -105,6 +112,10 @@ public class DiaryListActivity extends AppCompatActivity {
                         },
                         throwable -> Log.d(TAG, "error", throwable))
         );
+
+        if (diaries == null) {
+            diaries = new ArrayList<>();
+        }
 
         diaryAdapter.notifyDataSetChanged();
     }

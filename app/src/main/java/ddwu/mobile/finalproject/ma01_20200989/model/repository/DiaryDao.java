@@ -26,4 +26,7 @@ public interface DiaryDao {
 
     @Query("SELECT * FROM diary")
     Flowable<List<Diary>> findAllDiary();
+
+    @Query("SELECT * FROM diary")
+    List<Diary> findAllDiaryAtStart();
 }
