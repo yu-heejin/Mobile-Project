@@ -23,7 +23,7 @@ public class AdoptListActivity extends AppCompatActivity {
         adopts = new ArrayList<>();
 
         // mock data
-        adopts.add(new AdoptDto(1, "경기도 성남시", "정상", Date.valueOf("2022-01-01"), Date.valueOf("2122-01-01"), "믹스견", "보호중"));
+        adopts.add(new AdoptDto(1, "경기도 성남시", "정상", "2020-11-11", "2122-11-11", "믹스견", "보호중"));
 
         adoptAdapter = new AdoptAdapter(this, R.layout.custom_adopt_adapter, adopts);
         listView = (ListView) findViewById(R.id.adoptListView);

@@ -8,16 +8,16 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import java.util.List;
 import ddwu.mobile.finalproject.ma01_20200989.R;
-import ddwu.mobile.finalproject.ma01_20200989.model.domain.dto.DirayDto;
+import ddwu.mobile.finalproject.ma01_20200989.model.domain.dto.DiaryDto;
 
 public class DiaryAdapter extends BaseAdapter {
     private Context context;
     private int layout;
-    private List<DirayDto> diaries;
+    private List<DiaryDto> diaries;
     private LayoutInflater layoutInflater;
     ViewHolder holder;
 
-    public DiaryAdapter(Context context, int layout, List<DirayDto> diaries) {
+    public DiaryAdapter(Context context, int layout, List<DiaryDto> diaries) {
         this.context = context;
         this.layout = layout;
         this.diaries = diaries;
@@ -41,8 +41,6 @@ public class DiaryAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        final int position = i;
-
         if (view == null) {
             view = layoutInflater.inflate(layout, viewGroup, false);
             holder = new ViewHolder();
@@ -55,7 +53,7 @@ public class DiaryAdapter extends BaseAdapter {
         }
 
         holder.diaryTitle.setText(diaries.get(i).getTitle());
-        holder.diaryDate.setText(diaries.get(i).getDate().toString());
+        holder.diaryDate.setText(diaries.get(i).getDate());
         holder.petStatus.setText(diaries.get(i).getStatus());
 
         return view;

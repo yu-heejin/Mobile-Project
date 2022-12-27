@@ -14,7 +14,7 @@ public abstract class DiaryDatabase extends RoomDatabase {
     public abstract DiaryDao diaryDao();
     private static volatile DiaryDatabase INSTANSE;
 
-    static DiaryDatabase getDatabase(final Context context) {
+    public static DiaryDatabase getDatabase(final Context context) {
         if (INSTANSE == null) {
             synchronized (DiaryDatabase.class) {
                 if (INSTANSE == null) {

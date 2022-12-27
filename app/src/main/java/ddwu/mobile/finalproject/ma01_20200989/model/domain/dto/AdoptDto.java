@@ -6,12 +6,12 @@ public class AdoptDto {
     private int _id;
     private String city;
     private String disease;
-    private Date startDate;
-    private Date endDate;
+    private String startDate;
+    private String endDate;
     private String kind;
     private String protection;
 
-    public AdoptDto(int _id, String city, String disease, Date startDate, Date endDate, String kind, String protection) {
+    public AdoptDto(int _id, String city, String disease, String startDate, String endDate, String kind, String protection) {
         this._id = _id;
         this.city = city;
         this.disease = disease;
@@ -45,19 +45,19 @@ public class AdoptDto {
         this.disease = disease;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 

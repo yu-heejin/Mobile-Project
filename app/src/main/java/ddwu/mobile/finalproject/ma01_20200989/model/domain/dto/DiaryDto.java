@@ -1,15 +1,13 @@
 package ddwu.mobile.finalproject.ma01_20200989.model.domain.dto;
 
-import java.sql.Date;
-
-public class DirayDto {
+public class DiaryDto {
     private int _id;
     private String title;
     private String content;
     private String status;
-    private Date date;
+    private String date;
 
-    public DirayDto(int _id, String title, String content, String status, Date date) {
+    public DiaryDto(int _id, String title, String content, String status, String date) {
         this._id = _id;
         this.title = title;
         this.content = content;
@@ -49,11 +47,11 @@ public class DirayDto {
         this.status = status;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }

@@ -9,18 +9,21 @@ import androidx.room.Update;
 import java.util.List;
 
 import ddwu.mobile.finalproject.ma01_20200989.model.domain.entity.Diary;
+import io.reactivex.Completable;
+import io.reactivex.Flowable;
+import io.reactivex.Single;
 
 @Dao
 public interface DiaryDao {
     @Insert
-    long insertDiary(Diary diary);
+    Single<Long> insertDiary(Diary diary);
 
     @Update
-    void updateDiary(Diary diary);
+    Completable updateDiary(Diary diary);
 
     @Delete
-    void deleteDiary(Diary diary);
+    Completable deleteDiary(Diary diary);
 
     @Query("SELECT * FROM diary")
-    List<Diary> findAllDiary();
+    Flowable<List<Diary>> findAllDiary();
 }

@@ -6,7 +6,7 @@ import java.sql.Date;
 
 @Entity
 public class Diary {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int id;
     public String title;
     public String content;
