@@ -49,7 +49,7 @@ public class DiaryListActivity extends AppCompatActivity {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(allDiary -> {
-                    diaries.clear();
+                    // diaries.clear();
                             for (Diary diary : allDiary) {
                                 DiaryDto diaryDto = new DiaryDto(diary.id, diary.title, diary.content, diary.status, diary.date);
                                 diaries.add(diaryDto);

@@ -56,12 +56,15 @@ public class DetailDiaryActivity extends AppCompatActivity {
         String status = statusInput.getText().toString();
         String content = contentInput.getText().toString();
 
-        Single<Long> insertResult = diaryDao.insertDiary(new Diary(title, content, status, date));
+        Diary diary = new Diary(title, content, status, date);
+
+        Single<Long> insertResult = diaryDao.insertDiary(diary);
 
         DISPOSABLE.add (
                 insertResult.subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(result -> {
+                                    Log.d(TAG, "message : " + diary);
                                     Intent intent = new Intent();
                                     setResult(RESULT_OK, intent);
                                     finish();

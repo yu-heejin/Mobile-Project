@@ -19,4 +19,15 @@ public class Diary {
         this.status = status;
         this.date = date;
     }
+
+    @Override
+    public String toString() {
+        return "Diary{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", status='" + status + '\'' +
+                ", date='" + date + '\'' +
+                '}';
+    }
 }
