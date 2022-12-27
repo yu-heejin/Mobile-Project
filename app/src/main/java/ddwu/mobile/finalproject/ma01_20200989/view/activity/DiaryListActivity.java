@@ -49,7 +49,7 @@ public class DiaryListActivity extends AppCompatActivity {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(allDiary -> {
-                    // diaries.clear();
+                    diaries.clear();
                             for (Diary diary : allDiary) {
                                 DiaryDto diaryDto = new DiaryDto(diary.id, diary.title, diary.content, diary.status, diary.date);
                                 diaries.add(diaryDto);
@@ -86,5 +86,26 @@ public class DiaryListActivity extends AppCompatActivity {
             }
 
         }
+    }
+
+    protected void onResume() {
+        super.onResume();
+
+        Flowable<List<Diary>> resultDiaries = diaryDao.findAllDiary();
+
+        DISPOSABLE.add ( resultDiaries
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(allDiary -> {
+                            diaries.clear();
+                            for (Diary diary : allDiary) {
+                                DiaryDto diaryDto = new DiaryDto(diary.id, diary.title, diary.content, diary.status, diary.date);
+                                diaries.add(diaryDto);
+                            }
+                        },
+                        throwable -> Log.d(TAG, "error", throwable))
+        );
+
+        diaryAdapter.notifyDataSetChanged();
     }
 }
