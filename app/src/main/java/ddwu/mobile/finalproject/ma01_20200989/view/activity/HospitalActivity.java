@@ -81,12 +81,19 @@ public class HospitalActivity extends AppCompatActivity {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(mapReadyCallback);
 
+        apiAddress = getResources().getString(R.string.hospital_url);
+
+        if (!isOnline()) {
+            Toast.makeText(HospitalActivity.this, "네트워크를 사용가능하게 설정해주세요.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        new NetworkAsyncTask().execute(apiAddress);    // server_url 에 입력한 날짜를 결합한 후 AsyncTask 실행
+
         listView = (ListView) findViewById(R.id.hospitalListView);
         hospitals = new ArrayList<>();
         hospitalAdapter = new HospitalAdapter(HospitalActivity.this, R.layout.custom_hospital_adapter, hospitals);
         listView.setAdapter(hospitalAdapter);
-
-        apiAddress = getResources().getString(R.string.hospital_url);
     }
 
     OnMapReadyCallback mapReadyCallback = new OnMapReadyCallback() {
@@ -344,6 +351,5 @@ public class HospitalActivity extends AppCompatActivity {
     protected Bitmap readStreamToBitmap(InputStream stream) {
         return BitmapFactory.decodeStream(stream);
     }
-
 
 }
