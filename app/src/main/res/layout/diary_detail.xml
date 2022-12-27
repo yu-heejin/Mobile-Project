@@ -6,13 +6,46 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/statusInput"
         android:layout_width="253dp"
         android:layout_height="40dp"
-        android:layout_marginStart="145dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="124dp"
         android:ems="10"
         android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="140dp"
+        android:text="반려동물 상태"
+        android:textColor="#474343"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/titleInput"
+        android:layout_width="253dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="72dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="84dp"
+        android:text="제목"
+        android:textColor="#474343"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,25 +53,32 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="31dp"
-        android:text="반려동물 상태 요약"
+        android:text="날짜"
         android:textColor="#474343"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/detailLog"
+        android:id="@+id/contentInput"
         android:layout_width="411dp"
         android:layout_height="432dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="227dp"
         android:ems="10"
         android:hint="반려동물의 상태를 기록해보세요.\n향후 진료 시 도움이 될 수 있습니다."
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        tools:layout_editor_absoluteY="228dp" />
+
+    <EditText
+        android:id="@+id/todayInput"
+        android:layout_width="252dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="105dp"
+        android:ems="10"
+        android:inputType="date"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        tools:layout_editor_absoluteY="16dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

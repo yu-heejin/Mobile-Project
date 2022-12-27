@@ -49,13 +49,13 @@ public class AdoptAdapter extends BaseAdapter {
 
             holder = new AdoptAdapter.ViewHolder();
 
-            holder.petPicture = (ImageView) view.findViewById(R.id.petPicture);
-            holder.kind = (TextView) view.findViewById(R.id.kind);
-            holder.protection = (TextView) view.findViewById(R.id.protection);
-            holder.city = (TextView) view.findViewById(R.id.city);
-            holder.disease = (TextView) view.findViewById(R.id.disease);
-            holder.startDate = (TextView) view.findViewById(R.id.startDate);
-            holder.endDate = (TextView) view.findViewById(R.id.endDate);
+            holder.petPicture = (ImageView) view.findViewById(R.id.petPictureView);
+            holder.kind = (TextView) view.findViewById(R.id.kindView);
+            holder.protection = (TextView) view.findViewById(R.id.protectionView);
+            holder.city = (TextView) view.findViewById(R.id.cityView);
+            holder.disease = (TextView) view.findViewById(R.id.diseaseView);
+            holder.startDate = (TextView) view.findViewById(R.id.startDateView);
+            holder.endDate = (TextView) view.findViewById(R.id.endDateView);
 
             view.setTag(holder);
         } else {

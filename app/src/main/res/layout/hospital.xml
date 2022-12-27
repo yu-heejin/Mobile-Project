@@ -9,7 +9,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/logoInHospital"
             android:layout_width="227dp"
             android:layout_height="43dp"
             android:layout_marginStart="116dp"
@@ -19,7 +19,7 @@
             app:srcCompat="@drawable/logo" />
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/petLogoInHospital"
             android:layout_width="59dp"
             android:layout_height="82dp"
             android:layout_marginStart="68dp"

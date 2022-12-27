@@ -46,9 +46,9 @@ public class DiaryAdapter extends BaseAdapter {
         if (view == null) {
             view = layoutInflater.inflate(layout, viewGroup, false);
             holder = new ViewHolder();
-            holder.diaryTitle = (TextView) view.findViewById(R.id.logTitle);
-            holder.diaryDate = (TextView) view.findViewById(R.id.logDate);
-            holder.petStatus = (TextView) view.findViewById(R.id.status);
+            holder.diaryTitle = (TextView) view.findViewById(R.id.titleView);
+            holder.diaryDate = (TextView) view.findViewById(R.id.todayView);
+            holder.petStatus = (TextView) view.findViewById(R.id.statusView);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();

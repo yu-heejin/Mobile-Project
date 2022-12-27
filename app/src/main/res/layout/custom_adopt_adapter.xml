@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/protection"
+        android:id="@+id/protectionView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -14,11 +14,11 @@
         android:text="[상태]"
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/kind"
+        app:layout_constraintStart_toEndOf="@+id/kindView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/endDate"
+        android:id="@+id/endDateView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="106dp"
@@ -26,11 +26,11 @@
         android:text="입양 종료일"
         android:textColor="#303030"
         android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/petPicture"
-        app:layout_constraintTop_toBottomOf="@+id/city" />
+        app:layout_constraintStart_toEndOf="@+id/petPictureView"
+        app:layout_constraintTop_toBottomOf="@+id/cityView" />
 
     <TextView
-        android:id="@+id/startDate"
+        android:id="@+id/startDateView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
@@ -38,11 +38,11 @@
         android:text="입양 시작일"
         android:textColor="#303030"
         android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/petPicture"
-        app:layout_constraintTop_toBottomOf="@+id/city" />
+        app:layout_constraintStart_toEndOf="@+id/petPictureView"
+        app:layout_constraintTop_toBottomOf="@+id/cityView" />
 
     <TextView
-        android:id="@+id/disease"
+        android:id="@+id/diseaseView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="11dp"
@@ -50,11 +50,11 @@
         android:text="질병 적는 곳"
         android:textColor="#303030"
         android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/city"
-        app:layout_constraintTop_toBottomOf="@+id/kind" />
+        app:layout_constraintStart_toEndOf="@+id/cityView"
+        app:layout_constraintTop_toBottomOf="@+id/kindView" />
 
     <TextView
-        android:id="@+id/city"
+        android:id="@+id/cityView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
@@ -62,11 +62,11 @@
         android:text="시군구 적는 곳"
         android:textColor="#303030"
         android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/petPicture"
-        app:layout_constraintTop_toBottomOf="@+id/kind" />
+        app:layout_constraintStart_toEndOf="@+id/petPictureView"
+        app:layout_constraintTop_toBottomOf="@+id/kindView" />
 
     <ImageView
-        android:id="@+id/petPicture"
+        android:id="@+id/petPictureView"
         android:layout_width="103dp"
         android:layout_height="94dp"
         android:layout_marginStart="19dp"
@@ -76,7 +76,7 @@
         app:srcCompat="@drawable/dog" />
 
     <TextView
-        android:id="@+id/kind"
+        android:id="@+id/kindView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
@@ -84,6 +84,6 @@
         android:text="품종 적는 곳"
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/petPicture"
+        app:layout_constraintStart_toEndOf="@+id/petPictureView"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

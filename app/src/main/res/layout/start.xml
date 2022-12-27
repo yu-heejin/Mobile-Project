@@ -7,7 +7,7 @@
     tools:context=".view.activity.MainActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/logoInStart"
         android:layout_width="312dp"
         android:layout_height="59dp"
         android:layout_marginStart="48dp"
@@ -17,7 +17,7 @@
         app:srcCompat="@drawable/logo" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/petLogoInStart"
         android:layout_width="110dp"
         android:layout_height="137dp"
         android:layout_marginStart="56dp"
@@ -35,6 +35,6 @@
         android:onClick="startButtonOnClick"
         android:text="시작하기"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/logoInStart" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
