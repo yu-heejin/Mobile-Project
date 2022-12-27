@@ -10,5 +10,4 @@ public class DetailDiaryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.diary_detail);
     }
-
 }
