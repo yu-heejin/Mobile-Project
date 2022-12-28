@@ -90,7 +90,7 @@ public class HospitalActivity extends AppCompatActivity {
             return;
         }
 
-        new NetworkAsyncTask().execute(apiAddress);    // server_url 에 입력한 날짜를 결합한 후 AsyncTask 실행
+        new NetworkAsyncTask().execute(apiAddress);
 
         hospitals = new ArrayList<>();
     }
@@ -99,6 +99,9 @@ public class HospitalActivity extends AppCompatActivity {
         @Override
         public void onMapReady(@NonNull GoogleMap googleMap) {
             googleMapObject = googleMap;
+
+            checkPermission();
+            googleMapObject.setMyLocationEnabled(true);
 
         }
     };
@@ -230,15 +233,13 @@ public class HospitalActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             Log.i(TAG, result);
-            progressDlg.dismiss();  // 진행상황 다이얼로그 종료
-            hospitals.clear();        // 어댑터에 남아있는 이전 내용이 있다면 클리어
+            progressDlg.dismiss();
+            hospitals.clear();
 
-//          parser 생성 및 OpenAPI 수신 결과를 사용하여 parsing 수행
-            // HospitalXmlParser parser = new HospitalXmlParser();
             hospitals = hospitalXmlParser.parse(result);
             Log.i(TAG, hospitals.toString());
 
-            if (hospitals == null) {       // 올바른 결과를 수신하지 못하였을 경우 안내
+            if (hospitals == null) {
                 Toast.makeText(HospitalActivity.this, "결과가 없습니다.", Toast.LENGTH_SHORT).show();
             } else if (!hospitals.isEmpty()) {
                 hospitalAdapter = new HospitalAdapter(HospitalActivity.this, R.layout.custom_hospital_adapter, hospitals);
@@ -256,19 +257,12 @@ public class HospitalActivity extends AppCompatActivity {
         }
     }
 
-
-    /* 이하 네트워크 접속을 위한 메소드 */
-
-
-    /* 네트워크 환경 조사 */
     private boolean isOnline() {
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         return (networkInfo != null && networkInfo.isConnected());
     }
 
-
-    /* 주소(apiAddress)에 접속하여 문자열 데이터를 수신한 후 반환 */
     protected String downloadContents(String address) {
         HttpURLConnection conn = null;
         InputStream stream = null;
@@ -289,7 +283,6 @@ public class HospitalActivity extends AppCompatActivity {
         return result;
     }
 
-    /* 주소(apiAddress)에 접속하여 비트맵 데이터를 수신한 후 반환 */
     protected Bitmap downloadImage(String address) {
         HttpURLConnection conn = null;
         InputStream stream = null;
@@ -310,8 +303,6 @@ public class HospitalActivity extends AppCompatActivity {
         return result;
     }
 
-
-    /* URLConnection 을 전달받아 연결정보 설정 후 연결, 연결 후 수신한 InputStream 반환 */
     private InputStream getNetworkConnection(HttpURLConnection conn) throws Exception {
         conn.setReadTimeout(3000);
         conn.setConnectTimeout(3000);
@@ -325,8 +316,6 @@ public class HospitalActivity extends AppCompatActivity {
         return conn.getInputStream();
     }
 
-
-    /* InputStream을 전달받아 문자열로 변환 후 반환 */
     protected String readStreamToString(InputStream stream){
         StringBuilder result = new StringBuilder();
 
@@ -349,8 +338,6 @@ public class HospitalActivity extends AppCompatActivity {
         return result.toString();
     }
 
-
-    /* InputStream을 전달받아 비트맵으로 변환 후 반환 */
     protected Bitmap readStreamToBitmap(InputStream stream) {
         return BitmapFactory.decodeStream(stream);
     }
