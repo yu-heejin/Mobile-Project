@@ -1,12 +1,15 @@
 package ddwu.mobile.finalproject.ma01_20200989.view.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -17,6 +20,7 @@ import ddwu.mobile.finalproject.ma01_20200989.model.domain.entity.Diary;
 import ddwu.mobile.finalproject.ma01_20200989.model.repository.DiaryDao;
 import ddwu.mobile.finalproject.ma01_20200989.view.adapter.DiaryAdapter;
 import ddwu.mobile.finalproject.ma01_20200989.model.domain.dto.DiaryDto;
+import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -53,6 +57,39 @@ public class DiaryListActivity extends AppCompatActivity {
                 diaryAdapter = new DiaryAdapter(DiaryListActivity.this, R.layout.custom_diary_adapter, diaries);
                 listView = (ListView) findViewById(R.id.diaryListView);
                 listView.setAdapter(diaryAdapter);
+
+                listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        DiaryDto diaryDto = diaries.get(i);
+                        String title = diaries.get(i).getTitle();
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(DiaryListActivity.this);
+                        builder.setTitle("다이어리 삭제")
+                                .setMessage("\"" + title + "\" 기록을 정말 삭제하시겠습니까?")
+                                .setPositiveButton("삭제", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        Diary diary = new Diary(diaryDto.getTitle(), diaryDto.getContent(), diaryDto.getStatus(), diaryDto.getDate());
+                                        diary.id = diaryDto.get_id();
+
+                                        Completable deleteResult = diaryDao.deleteDiary(diary);
+                                        DISPOSABLE.add(deleteResult
+                                                .subscribeOn(Schedulers.io())
+                                                .observeOn(AndroidSchedulers.mainThread())
+                                                .subscribe(() -> {
+                                                    Log.d(TAG, "Delete success: ");
+                                                            onResume();
+                                                        },
+                                                        throwable -> Log.d(TAG, "error")) );
+                                    }
+                                })
+                                .setNegativeButton("취소", null)
+                                .setCancelable(false)
+                                .show();
+                        return true;
+                    }
+                });
             }
         }
         ).start();
