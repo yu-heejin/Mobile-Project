@@ -93,9 +93,6 @@ public class HospitalActivity extends AppCompatActivity {
         new NetworkAsyncTask().execute(apiAddress);    // server_url 에 입력한 날짜를 결합한 후 AsyncTask 실행
 
         hospitals = new ArrayList<>();
-//        hospitalAdapter = new HospitalAdapter(HospitalActivity.this, R.layout.custom_hospital_adapter, hospitals);
-//        listView = (ListView) findViewById(R.id.hospitalListView);
-//        listView.setAdapter(hospitalAdapter);
     }
 
     OnMapReadyCallback mapReadyCallback = new OnMapReadyCallback() {
@@ -247,8 +244,6 @@ public class HospitalActivity extends AppCompatActivity {
                 hospitalAdapter = new HospitalAdapter(HospitalActivity.this, R.layout.custom_hospital_adapter, hospitals);
                 listView = (ListView) findViewById(R.id.hospitalListView);
                 listView.setAdapter(hospitalAdapter);
-                //hospitalAdapter.a(hospitals);     // 리스트뷰에 연결되어 있는 어댑터에 parsing 결과 ArrayList 를 추가
-                //hospitalAdapter.notifyDataSetChanged();
             }
         }
 

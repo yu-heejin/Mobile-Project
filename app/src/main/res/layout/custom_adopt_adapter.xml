@@ -20,13 +20,13 @@
     <TextView
         android:id="@+id/endDateView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="106dp"
-        android:layout_marginTop="12dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
         android:text="입양 종료일"
         android:textColor="#303030"
-        android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/petPictureView"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@+id/startDateView"
         app:layout_constraintTop_toBottomOf="@+id/cityView" />
 
     <TextView
@@ -34,24 +34,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="15dp"
         android:text="입양 시작일"
         android:textColor="#303030"
-        android:textSize="15sp"
+        android:textSize="13sp"
         app:layout_constraintStart_toEndOf="@+id/petPictureView"
-        app:layout_constraintTop_toBottomOf="@+id/cityView" />
+        app:layout_constraintTop_toBottomOf="@+id/diseaseView" />
 
     <TextView
         android:id="@+id/diseaseView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="10dp"
         android:text="질병 적는 곳"
         android:textColor="#303030"
-        android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/cityView"
-        app:layout_constraintTop_toBottomOf="@+id/kindView" />
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@+id/petPictureView"
+        app:layout_constraintTop_toBottomOf="@+id/cityView" />
 
     <TextView
         android:id="@+id/cityView"
@@ -61,7 +61,7 @@
         android:layout_marginTop="13dp"
         android:text="시군구 적는 곳"
         android:textColor="#303030"
-        android:textSize="15sp"
+        android:textSize="10sp"
         app:layout_constraintStart_toEndOf="@+id/petPictureView"
         app:layout_constraintTop_toBottomOf="@+id/kindView" />
 
@@ -69,8 +69,8 @@
         android:id="@+id/petPictureView"
         android:layout_width="103dp"
         android:layout_height="94dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/dog" />

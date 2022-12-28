@@ -11,6 +11,10 @@ public class AdoptDto {
     private String kind;
     private String protection;
 
+    public AdoptDto() {
+
+    }
+
     public AdoptDto(int _id, String city, String disease, String startDate, String endDate, String kind, String protection) {
         this._id = _id;
         this.city = city;
