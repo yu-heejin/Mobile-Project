@@ -76,4 +76,17 @@ public class AdoptDto {
     public void setProtection(String protection) {
         this.protection = protection;
     }
+
+    @Override
+    public String toString() {
+        return "AdoptDto{" +
+                "_id=" + _id +
+                ", city='" + city + '\'' +
+                ", disease='" + disease + '\'' +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                ", kind='" + kind + '\'' +
+                ", protection='" + protection + '\'' +
+                '}';
+    }
 }

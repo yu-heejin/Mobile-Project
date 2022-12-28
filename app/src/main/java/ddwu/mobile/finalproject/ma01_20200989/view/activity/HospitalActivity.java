@@ -62,6 +62,7 @@ public class HospitalActivity extends AppCompatActivity {
     private List<HospitalDto> hospitals;
     private HospitalAdapter hospitalAdapter;
     String apiAddress;
+    private HospitalXmlParser hospitalXmlParser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +83,7 @@ public class HospitalActivity extends AppCompatActivity {
         mapFragment.getMapAsync(mapReadyCallback);
 
         apiAddress = getResources().getString(R.string.hospital_url);
+        hospitalXmlParser = new HospitalXmlParser();
 
         if (!isOnline()) {
             Toast.makeText(HospitalActivity.this, "네트워크를 사용가능하게 설정해주세요.", Toast.LENGTH_SHORT).show();
@@ -90,10 +92,10 @@ public class HospitalActivity extends AppCompatActivity {
 
         new NetworkAsyncTask().execute(apiAddress);    // server_url 에 입력한 날짜를 결합한 후 AsyncTask 실행
 
-        listView = (ListView) findViewById(R.id.hospitalListView);
         hospitals = new ArrayList<>();
-        hospitalAdapter = new HospitalAdapter(HospitalActivity.this, R.layout.custom_hospital_adapter, hospitals);
-        listView.setAdapter(hospitalAdapter);
+//        hospitalAdapter = new HospitalAdapter(HospitalActivity.this, R.layout.custom_hospital_adapter, hospitals);
+//        listView = (ListView) findViewById(R.id.hospitalListView);
+//        listView.setAdapter(hospitalAdapter);
     }
 
     OnMapReadyCallback mapReadyCallback = new OnMapReadyCallback() {
@@ -220,6 +222,7 @@ public class HospitalActivity extends AppCompatActivity {
         protected String doInBackground(String... strings) {
             String address = strings[0];
             String result = downloadContents(address);
+
             if (result == null) {
                 cancel(true);
                 return NETWORK_ERR_MSG;
@@ -229,18 +232,23 @@ public class HospitalActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
+            Log.i(TAG, result);
             progressDlg.dismiss();  // 진행상황 다이얼로그 종료
             hospitals.clear();        // 어댑터에 남아있는 이전 내용이 있다면 클리어
 
 //          parser 생성 및 OpenAPI 수신 결과를 사용하여 parsing 수행
-            HospitalXmlParser parser = new HospitalXmlParser();
-            hospitals = parser.parse(result);
+            // HospitalXmlParser parser = new HospitalXmlParser();
+            hospitals = hospitalXmlParser.parse(result);
+            Log.i(TAG, hospitals.toString());
 
             if (hospitals == null) {       // 올바른 결과를 수신하지 못하였을 경우 안내
                 Toast.makeText(HospitalActivity.this, "결과가 없습니다.", Toast.LENGTH_SHORT).show();
             } else if (!hospitals.isEmpty()) {
+                hospitalAdapter = new HospitalAdapter(HospitalActivity.this, R.layout.custom_hospital_adapter, hospitals);
+                listView = (ListView) findViewById(R.id.hospitalListView);
+                listView.setAdapter(hospitalAdapter);
                 //hospitalAdapter.a(hospitals);     // 리스트뷰에 연결되어 있는 어댑터에 parsing 결과 ArrayList 를 추가
-                hospitalAdapter.notifyDataSetChanged();
+                //hospitalAdapter.notifyDataSetChanged();
             }
         }
 

@@ -68,4 +68,16 @@ public class HospitalDto {
     public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
+
+    @Override
+    public String toString() {
+        return "HospitalDto{" +
+                "title='" + title + '\'' +
+                ", address='" + address + '\'' +
+                ", tel='" + tel + '\'' +
+                ", status='" + status + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", longitude='" + longitude + '\'' +
+                '}';
+    }
 }

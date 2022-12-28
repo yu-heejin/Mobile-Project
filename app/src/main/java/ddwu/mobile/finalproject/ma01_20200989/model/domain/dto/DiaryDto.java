@@ -54,4 +54,15 @@ public class DiaryDto {
     public void setDate(String date) {
         this.date = date;
     }
+
+    @Override
+    public String toString() {
+        return "DiaryDto{" +
+                "_id=" + _id +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", status='" + status + '\'' +
+                ", date='" + date + '\'' +
+                '}';
+    }
 }

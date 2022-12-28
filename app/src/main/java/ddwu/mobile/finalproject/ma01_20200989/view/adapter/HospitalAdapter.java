@@ -13,30 +13,30 @@ import ddwu.mobile.finalproject.ma01_20200989.model.domain.dto.HospitalDto;
 public class HospitalAdapter extends BaseAdapter {
     private Context context;
     private int layout;
-    private List<HospitalDto> diaries;
+    private List<HospitalDto> hospitals;
     private LayoutInflater layoutInflater;
     ViewHolder holder;
 
     public HospitalAdapter(Context context, int layout, List<HospitalDto> diaries) {
         this.context = context;
         this.layout = layout;
-        this.diaries = diaries;
+        this.hospitals = diaries;
         this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public int getCount() {
-        return diaries.size();
+        return hospitals.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return diaries.get(i);
+        return hospitals.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
 
     @Override
@@ -55,6 +55,11 @@ public class HospitalAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) view.getTag();
         }
+
+        holder.hospitalTitleView.setText(hospitals.get(i).getTitle());
+        holder.hospitalAddressView.setText(hospitals.get(i).getAddress());
+        holder.hospitalStatusView.setText(hospitals.get(i).getStatus());
+        holder.hospitalTelView.setText(hospitals.get(i).getTel());
 
         return view;
     }
