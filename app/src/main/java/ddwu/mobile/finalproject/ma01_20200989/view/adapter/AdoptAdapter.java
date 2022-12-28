@@ -1,12 +1,19 @@
 package ddwu.mobile.finalproject.ma01_20200989.view.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import ddwu.mobile.finalproject.ma01_20200989.R;
 import ddwu.mobile.finalproject.ma01_20200989.model.domain.dto.AdoptDto;
@@ -62,7 +69,7 @@ public class AdoptAdapter extends BaseAdapter {
            holder = (ViewHolder) view.getTag();
         }
 
-        holder.petPicture.setImageResource(R.drawable.dog);
+        new DownloadFilesTask().execute(adopts.get(i).getUrl());
         holder.kind.setText(adopts.get(i).getKind());
         holder.protection.setText(adopts.get(i).getProtection());
         holder.city.setText(adopts.get(i).getCity());
@@ -81,5 +88,33 @@ public class AdoptAdapter extends BaseAdapter {
         TextView disease;
         TextView startDate;
         TextView endDate;
+    }
+
+    private class DownloadFilesTask extends AsyncTask<String,Void, Bitmap> {
+        @Override
+        protected Bitmap doInBackground(String... strings) {
+            Bitmap bmp = null;
+            try {
+                String img_url = strings[0]; //url of the image
+                URL url = new URL(img_url);
+                bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return bmp;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+
+        @Override
+        protected void onPostExecute(Bitmap result) {
+            holder.petPicture.setImageBitmap(result);
+        }
     }
 }

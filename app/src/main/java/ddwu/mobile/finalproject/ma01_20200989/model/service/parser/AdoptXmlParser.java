@@ -12,10 +12,11 @@ import ddwu.mobile.finalproject.ma01_20200989.model.domain.dto.AdoptDto;
 import ddwu.mobile.finalproject.ma01_20200989.model.domain.dto.HospitalDto;
 
 public class AdoptXmlParser {
-    private enum TagType { NONE, KIND, STATE, ADDRESS, MARK, START_DATE, END_DATE };
+    private enum TagType { NONE, KIND, IMAGE, STATE, ADDRESS, MARK, START_DATE, END_DATE };
 
     private final static String ITEM = "item";
     private final static String KIND_CD = "kindCd";
+    private final static String FILE_NAME = "filename";
     private final static String PROCESS_STATE = "processState";
     private final static String CARE_ADDR = "careAddr";
     private final static String SPECIAL_MARK = "specialMark";
@@ -67,6 +68,8 @@ public class AdoptXmlParser {
                             tagType = TagType.START_DATE;
                         } else if (adoptDto != null && tag.equals(NOTICE_EDT)) {
                             tagType = TagType.END_DATE;
+                        } else if (adoptDto != null && tag.equals(FILE_NAME)) {
+                            tagType = TagType.IMAGE;
                         }
                         break;
 
@@ -95,6 +98,9 @@ public class AdoptXmlParser {
                                 break;
                             case END_DATE:
                                 adoptDto.setEndDate(parser.getText());
+                                break;
+                            case IMAGE:
+                                adoptDto.setUrl(parser.getText());
                                 break;
                         }
                         tagType = TagType.NONE;

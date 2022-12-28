@@ -10,12 +10,13 @@ public class AdoptDto {
     private String endDate;
     private String kind;
     private String protection;
+    private String url;
 
     public AdoptDto() {
 
     }
 
-    public AdoptDto(int _id, String city, String disease, String startDate, String endDate, String kind, String protection) {
+    public AdoptDto(int _id, String city, String disease, String startDate, String endDate, String kind, String protection, String url) {
         this._id = _id;
         this.city = city;
         this.disease = disease;
@@ -23,6 +24,7 @@ public class AdoptDto {
         this.endDate = endDate;
         this.kind = kind;
         this.protection = protection;
+        this.url = url;
     }
 
     public int get_id() {
@@ -81,6 +83,14 @@ public class AdoptDto {
         this.protection = protection;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     @Override
     public String toString() {
         return "AdoptDto{" +
@@ -91,6 +101,7 @@ public class AdoptDto {
                 ", endDate='" + endDate + '\'' +
                 ", kind='" + kind + '\'' +
                 ", protection='" + protection + '\'' +
+                ", url='" + url + '\'' +
                 '}';
     }
 }
