@@ -3,10 +3,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <Button
         android:id="@+id/diaryAddButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#BDADE8"
+        android:fontFamily="@font/gmarketsansttfmedium"
         android:onClick="addDiaryButtonOnClick"
         android:text="반려동물 상태 기록하기" />
 

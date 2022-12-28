@@ -30,10 +30,14 @@
         android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
+        android:layout_marginStart="144dp"
         android:layout_marginTop="108dp"
+        android:background="#00ff0000"
+        android:fontFamily="@font/gmarketsansttfmedium"
         android:onClick="startButtonOnClick"
         android:text="시작하기"
+        android:textColor="#0E0E0E"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoInStart" />
 

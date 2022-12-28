@@ -47,6 +47,7 @@ public class DiaryAdapter extends BaseAdapter {
             holder.diaryTitle = (TextView) view.findViewById(R.id.titleView);
             holder.diaryDate = (TextView) view.findViewById(R.id.todayView);
             holder.petStatus = (TextView) view.findViewById(R.id.statusView);
+            holder.diaryContent = (TextView) view.findViewById(R.id.contentView);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
@@ -55,6 +56,7 @@ public class DiaryAdapter extends BaseAdapter {
         holder.diaryTitle.setText(diaries.get(i).getTitle());
         holder.diaryDate.setText(diaries.get(i).getDate());
         holder.petStatus.setText(diaries.get(i).getStatus());
+        holder.diaryContent.setText(diaries.get(i).getContent());
 
         return view;
     }
@@ -63,5 +65,6 @@ public class DiaryAdapter extends BaseAdapter {
         TextView diaryTitle;
         TextView diaryDate;
         TextView petStatus;
+        TextView diaryContent;
     }
 }
